@@ -37,7 +37,7 @@ module.exports = (context, eventGridEvent, inputBlob) => {
   const blobUrl = context.bindingData.data.url;
   const blobName = blobUrl.slice(blobUrl.lastIndexOf("/")+1);
 
-  const image = await Jimp.read(inputBlob);
+  const image = Jimp.read(inputBlob);
   const thumbnail = image.resize(widthInPixels, Jimp.AUTO);
   const thumbnailBuffer = await thumbnail.getBufferAsync(Jimp.AUTO);
   const readStream = stream.PassThrough();
