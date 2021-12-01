@@ -47,7 +47,7 @@ module.exports = (context, eventGridEvent, inputBlob) => {
   const blockBlobURL = BlockBlobURL.fromContainerURL(containerURL, blobName);
   try {
 
-    await uploadStreamToBlockBlob(aborter, readStream,
+    uploadStreamToBlockBlob(aborter, readStream,
       blockBlobURL, uploadOptions.bufferSize, uploadOptions.maxBuffers,
       { blobHTTPHeaders: { blobContentType: "image/*" } });
 
