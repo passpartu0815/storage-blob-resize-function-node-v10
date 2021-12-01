@@ -39,7 +39,7 @@ module.exports = (context, eventGridEvent, inputBlob) => {
 
   const image = Jimp.read(inputBlob);
   const thumbnail = image.resize(widthInPixels, Jimp.AUTO);
-  const thumbnailBuffer = await thumbnail.getBufferAsync(Jimp.AUTO);
+  const thumbnailBuffer = thumbnail.getBufferAsync(Jimp.AUTO);
   const readStream = stream.PassThrough();
   readStream.end(thumbnailBuffer);
 
